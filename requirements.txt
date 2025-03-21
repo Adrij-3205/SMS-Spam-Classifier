@@ -1,0 +1,11 @@
+numpy
+pandas
+chardet
+matplotlib
+seaborn
+nltk
+wordcloud
+scikit-learn
+xgboost
+Flask
+gunicorn
