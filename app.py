@@ -39,22 +39,71 @@ with open('bnb_model.pkl', 'rb') as f:
 # Initialize the Flask app
 app = Flask(__name__)
 
-# HTML template (using render_template_string for simplicity)
 HTML_TEMPLATE = '''
 <!doctype html>
 <html>
     <head>
         <title>SMS Spam Checker</title>
+        <style>
+            body {
+                background-color: #f0f2f5;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 100%;
+                max-width: 600px;
+                margin: 50px auto;
+                background-color: #fff;
+                padding: 30px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                border-radius: 8px;
+                text-align: center;
+            }
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+                font-size: 16px;
+            }
+            input[type="submit"] {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                font-size: 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-top: 15px;
+            }
+            input[type="submit"]:hover {
+                background-color: #218838;
+            }
+            h1 {
+                color: #333;
+            }
+            .result {
+                margin-top: 20px;
+                font-size: 20px;
+                font-weight: bold;
+                color: #555;
+            }
+        </style>
     </head>
     <body>
-        <h1>SMS Spam Checker</h1>
-        <form method="post">
-            <textarea name="sms_text" rows="4" cols="50" placeholder="Enter SMS message here"></textarea><br><br>
-            <input type="submit" value="Check">
-        </form>
-        {% if prediction %}
-            <h2>Prediction: {{ prediction }}</h2>
-        {% endif %}
+        <div class="container">
+            <h1>SMS Spam Checker</h1>
+            <form method="post">
+                <textarea name="sms_text" rows="5" placeholder="Enter SMS message here"></textarea><br>
+                <input type="submit" value="Check">
+            </form>
+            {% if prediction %}
+                <div class="result">Prediction: {{ prediction }}</div>
+            {% endif %}
+        </div>
     </body>
 </html>
 '''
